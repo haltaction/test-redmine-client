@@ -1,0 +1,15 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}RedmineBundle:Project:list{% endblock %}
+
+{% block body %}
+<h1>Projects list</h1>
+    <ul>
+        {% for project in projects.projects %}
+            <li class="list-group-item">{% if project.parent is defined %}{{ "&#8212; " }}{% endif %}
+                <a href="{{ path('project_show', {'projectId': project.id}) }}">{{ project.name }}</a></li>
+                {#{{ dump(project) }}#}
+        {% endfor %}
+    </ul>
+
+{% endblock %}

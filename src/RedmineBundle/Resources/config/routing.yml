@@ -1,0 +1,12 @@
+projects_list:
+    path:     /project/list
+    defaults: { _controller: RedmineBundle:Project:list }
+    methods: [GET]
+
+project_show:
+    path:     /project/{projectId}/{page}
+    defaults: { _controller: RedmineBundle:Project:showProject, page: 1 }
+    methods: [GET]
+    requirements:
+        projectId: '[0-9]+'
+        page: '^\d{1,2}$'

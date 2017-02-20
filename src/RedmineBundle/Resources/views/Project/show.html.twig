@@ -1,0 +1,55 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}RedmineBundle:Project:show{% endblock %}
+
+{% block body %}
+    <div class="page-header">
+        <h1>Project {{ project.name }}</h1>
+        <span>Spent time - {{ projectTime }} hours</span>
+
+        <div class="pull-right">
+            <a class="btn btn-default" href="{{ path('projects_list') }}" role="button">Back to projects</a>
+        </div>
+    </div>
+
+    <table class="table table-striped table-hover">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Tracker</th>
+                <th>Status</th>
+                <th>Priority</th>
+                <th>Subject</th>
+                <th>Description</th>
+                <th>Author</th>
+                <th>Updated</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for issue in projectIssues.issues  %}
+                <tr>
+                    <th scope="row">{{ issue.id }}</th>
+                    <td>{{ issue.tracker.name }}</td>
+                    <td>{{ issue.status.name }}</td>
+                    <td>{{ issue.priority.name }}</td>
+                    <td>{{ issue.subject }}</td>
+                    <td>{{ issue.description|length > 20 ? issue.description|slice(0, 20)+".." : issue.description }}</td>
+                    <td>{{ issue.author.name }}</td>
+                    <td>{{ issue.updated_on|date }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    {% set page = app.request.get('page') %}
+    <ul class="pager">
+        <li class="previous {% if page == 1 %}{{ "disabled"}}{% endif %}">
+            <a href="{{ path('project_show', {'projectId': project.id, 'page': page-1 }) }}">
+                <span aria-hidden="true">&larr;</span> Previous</a>
+        </li>
+        <li class="next {% if (projectIssues.total_count <= projectIssues.offset) or (projectIssues.total_count < projectIssues.limit) %}{{ "disabled" }}{% endif %}">
+            <a href="{{ path('project_show', {'projectId': project.id, 'page': page+1 }) }}">Next <span aria-hidden="true">&rarr;</span></a>
+        </li>
+    </ul>
+
+{% endblock %}
