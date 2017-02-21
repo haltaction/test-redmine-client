@@ -1,0 +1,52 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}Issue show{% endblock %}
+
+{% block body %}
+    <a class="btn btn-default" href="{{ path('issues_list', {'projectId': issue.issue.project.id}) }}" role="button">Back to list</a>
+
+    <div class="page-header">
+        <h1>Issue "{{ issue.issue.subject }}"</h1>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <p>{{ issue.issue.description }}</p>
+            <table>
+                <tr>
+                    <th>Author</th>
+                    <td>{{ issue.issue.author.name }}</td>
+                </tr>
+                <tr>
+                    <th>Created</th>
+                    <td>{{ issue.issue.created_on|date }}</td>
+                </tr>
+                <tr>
+                    <th>Status</th>
+                    <td>{{ issue.issue.status.name }}</td>
+                </tr>
+                <tr>
+                    <th>Priority</th>
+                    <td>{{ issue.issue.priority.name }}</td>
+                </tr>
+                <tr>
+                    <th>Status</th>
+                    <td>{{ issue.issue.status.name }}</td>
+                </tr>
+                <tr>
+                    <th>Project</th>
+                    <td>{{ issue.issue.project.name }}</td>
+                </tr>
+                <tr>
+                    <th>Spent time</th>
+                    <td>{{ issue.issue.spent_hours|round(2) }}h</td>
+                </tr>
+                <tr>
+                    <th>Done</th>
+                    <td>{{ issue.issue.done_ratio }}%</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+{% endblock %}

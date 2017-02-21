@@ -1,12 +1,27 @@
 projects_list:
     path:     /project/list
-    defaults: { _controller: RedmineBundle:Project:list }
+    defaults: { _controller: RedmineBundle:Redmine:listProject }
     methods: [GET]
 
 project_show:
-    path:     /project/{projectId}/{page}
-    defaults: { _controller: RedmineBundle:Project:showProject, page: 1 }
+    path:     /project/{projectId}
+    defaults: { _controller: RedmineBundle:Redmine:showProject }
     methods: [GET]
     requirements:
-        projectId: '[0-9]+'
+        projectId: '^\d+$'
+
+issues_list:
+    path:     /project/{projectId}/issue/list/{page}
+    defaults: { _controller: RedmineBundle:Redmine:issuesList, page: 1 }
+    methods: [GET]
+    requirements:
+        projectId: '^\d+$'
         page: '^\d{1,2}$'
+
+issue_show:
+    path:     /project/{projectId}/issue/{issueId}
+    defaults: { _controller: RedmineBundle:Redmine:showIssue}
+    methods: [GET]
+    requirements:
+        projectId: '^\d+$'
+        issueId: '^\d+$'

@@ -1,0 +1,15 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}Project show{% endblock %}
+
+{% block body %}
+    <a class="btn btn-default" href="{{ path('projects_list') }}" role="button">Back to projects</a>
+
+    <div class="page-header">
+        <h1>Project "{{ project.name }}"</h1>
+        <span class="bg-info">Spent time - {{ projectTime }} hours</span>
+    </div>
+
+    <a class="btn btn-default" href="{{ path('issues_list', {'projectId': projectId}) }}" role="button">Issues list</a>
+
+{% endblock %}
