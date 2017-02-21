@@ -1,3 +1,11 @@
+# redirect root to list
+root:
+    path: /
+    defaults:
+        _controller: FrameworkBundle:Redirect:redirect
+        route: projects_list
+        permanent: true
+
 projects_list:
     path:     /project/list
     defaults: { _controller: RedmineBundle:Redmine:listProject }
@@ -25,3 +33,14 @@ issue_show:
     requirements:
         projectId: '^\d+$'
         issueId: '^\d+$'
+
+
+# security
+login:
+    path: /login
+    defaults: { _controller: RedmineBundle:Security:login }
+    methods: [GET, POST]
+
+logout:
+    path: /logout
+    methods: [GET]

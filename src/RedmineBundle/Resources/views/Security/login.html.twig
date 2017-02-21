@@ -1,0 +1,33 @@
+{% extends "RedmineBundle::base.html.twig" %}
+
+{% block title %}Login{% endblock %}
+
+{% block body %}
+    <div class="login-wrapper">
+        {% if error %}
+            <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+        {% endif %}
+
+        <form action="{{ path('login') }}" method="post">
+            <div class="form-group">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="_username" value="{{ last_username }}" class="form-control" />
+            </div>
+
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="_password" class="form-control" />
+            </div>
+
+            <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}" />
+
+            {#
+                If you want to control the URL the user
+                is redirected to on success (more details below)
+                <input type="hidden" name="_target_path" value="/account" />
+            #}
+
+            <button type="submit"  class="btn btn-default">login</button>
+        </form>
+    </div>
+{% endblock %}
