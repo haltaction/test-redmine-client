@@ -51,4 +51,22 @@ class CommentController extends Controller
             'commentForm' => $form->createView(),
         ]);
     }
+
+    /**
+     * Show comments list
+     *
+     * @param $projectId
+     *
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function listCommentAction($projectId)
+    {
+        $comments = $this->get('redmine.comment.repository')
+            ->getAllByProject($projectId)
+            ->execute();
+
+        return $this->render('RedmineBundle:Comment:comment_list.html.twig', [
+            'comments' => $comments,
+        ]);
+    }
 }

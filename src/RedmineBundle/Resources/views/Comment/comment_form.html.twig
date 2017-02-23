@@ -1,9 +1,9 @@
-{{ form_start(commentForm, { 'attr': {'class': 'col-md-6'}}) }}
+{{ form_start(commentForm) }}
 {{ form_errors(commentForm) }}
-<div class="form-group row req">
-    {{ form_row(commentForm.text, {'attr': {'class': 'form-control', 'rows': '5'}, 'label': "Your comment:"}) }}
+<div class="form-group">
+    {{ form_row(commentForm.text, {'attr': {'class': 'form-control', 'rows': '5', 'resize': 'none'}, 'label': "Your comment:"}) }}
 </div>
-<div class="form-group row col-md-4 col-md-offset-4">
-    {{ form_row(commentForm.create, {'attr': {'class': 'form-control btn btn-success'}}) }}
+<div class="form-group">
+    {{ form_row(commentForm.create, {'attr': {'class': 'btn btn-success'}}) }}
 </div>
 {{ form_end(commentForm) }}

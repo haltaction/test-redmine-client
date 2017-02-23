@@ -1,0 +1,15 @@
+{% if comments is not empty %}
+    <p>All comments:</p>
+    <ul class="list-group comments-list">
+    {% for comment in comments %}
+        <li class="list-group-item">
+            <span>{{ comment.username|capitalize }}, </span>
+            <span>{{ comment.createdAt|date('d/m/Y H:i') }}</span>
+            <p class="bg-info">{{ comment.text }}</p>
+        </li>
+
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No comments</p>
+{% endif %}
