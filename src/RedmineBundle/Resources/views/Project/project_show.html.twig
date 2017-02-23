@@ -10,6 +10,12 @@
         <span class="bg-info">Spent time - {{ projectTime }} hours</span>
     </div>
 
-    <a class="btn btn-default" href="{{ path('issues_list', {'projectId': projectId}) }}" role="button">Issues list</a>
+    <div>
+        <a class="btn btn-default" href="{{ path('issues_list', {'projectId': projectId}) }}" role="button">Issues list</a>
+    </div>
+
+    <div>
+        {{ render(controller('RedmineBundle:Comment:createComment', {'projectId': project.id})) }}
+    </div>
 
 {% endblock %}

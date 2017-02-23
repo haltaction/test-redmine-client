@@ -1,25 +1,25 @@
 # redirect root to list
 root:
-    path: /
+    path:   /
     defaults:
         _controller: FrameworkBundle:Redirect:redirect
         route: projects_list
         permanent: true
 
 projects_list:
-    path:     /project/list
+    path:   /project/list
     defaults: { _controller: RedmineBundle:Redmine:listProject }
     methods: [GET]
 
 project_show:
-    path:     /project/{projectId}
+    path:   /project/{projectId}
     defaults: { _controller: RedmineBundle:Redmine:showProject }
     methods: [GET]
     requirements:
         projectId: '^\d+$'
 
 issues_list:
-    path:     /project/{projectId}/issue/list/{page}
+    path:   /project/{projectId}/issue/list/{page}
     defaults: { _controller: RedmineBundle:Redmine:issuesList, page: 1 }
     methods: [GET]
     requirements:
@@ -27,20 +27,27 @@ issues_list:
         page: '^\d{1,2}$'
 
 issue_show:
-    path:     /project/{projectId}/issue/{issueId}
+    path:   /project/{projectId}/issue/{issueId}
     defaults: { _controller: RedmineBundle:Redmine:showIssue}
     methods: [GET]
     requirements:
         projectId: '^\d+$'
         issueId: '^\d+$'
 
-
 # security
 login:
-    path: /login
+    path:   /login
     defaults: { _controller: RedmineBundle:Security:login }
     methods: [GET, POST]
 
 logout:
-    path: /logout
+    path:   /logout
     methods: [GET]
+
+# comments
+comment_add:
+    path:   /project/{projectId}
+    defaults: { _controller: RedmineBundle:Comment:createComment }
+    methods: [POST]
+    requirements:
+        projectId: '^\d+$'

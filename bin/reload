@@ -14,5 +14,6 @@ function show_run($text, $command, $canFail = false)
 // main
 show_run("Warming up dev cache", "bin/console c:c");
 show_run("assets:install", "bin/console a:i --symlink --relative");
+show_run("schema:update", "bin/console doctrine:schema:update -f");
 show_run("build bootstrap", "composer run-script post-update-cmd");
 exit(0);
