@@ -20,7 +20,7 @@ class RedmineController extends Controller
             return new Response("Api connect error", 500);
         }
 
-        return $this->render('RedmineBundle:Project:projects_list.html.twig', [
+        return $this->render('RedmineBundle:Redmine:projects_list.html.twig', [
             'projects' => $projects,
         ]);
     }
@@ -42,7 +42,7 @@ class RedmineController extends Controller
             return new Response("Wrong project id", 400);
         }
 
-        return $this->render('RedmineBundle:Project:project_show.html.twig', [
+        return $this->render('RedmineBundle:Redmine:project_show.html.twig', [
             'project' => $project['project'],
             'projectTime' => $projectTime,
         ]);
@@ -66,7 +66,7 @@ class RedmineController extends Controller
             'limit' => $limitIssue,
         ]);
 
-        return $this->render('RedmineBundle:Project:issues_list.html.twig', [
+        return $this->render('RedmineBundle:Redmine:issues_list.html.twig', [
             'projectId' => $projectId,
             'projectIssues' => $projectIssues,
         ]);
@@ -88,7 +88,7 @@ class RedmineController extends Controller
             return new Response("Wrong issue id", 400);
         }
 
-        return $this->render('@Redmine/Project/issue_show.html.twig', [
+        return $this->render('RedmineBundle:Redmine:issue_show.html.twig', [
             'issue' => $issue,
         ]);
     }
