@@ -35,12 +35,11 @@ class RedmineController extends Controller
     public function showProjectAction($projectId)
     {
         $project = $this->get('redmine.client')->project->show($projectId);
+        if (!$project) {
+            $this->createNotFoundException();
+        }
 
         $projectTime = $this->get('redmine.manager')->getAllProjectTime($projectId);
-
-        if (!$project) {
-            return new Response("Wrong project id", 400);
-        }
 
         return $this->render('RedmineBundle:Redmine:project_show.html.twig', [
             'project' => $project['project'],
