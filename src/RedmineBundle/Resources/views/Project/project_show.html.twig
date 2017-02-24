@@ -11,14 +11,16 @@
     </div>
 
     <div class="bottom-line">
-        <a class="btn btn-default" href="{{ path('issues_list', {'projectId': projectId}) }}" role="button">Issues list</a>
+        <a class="btn btn-default" href="{{ path('issues_list', {'projectId': project.id}) }}" role="button">Issues list</a>
     </div>
 
     <div class="bottom-line comment-form-wrapper">
-        {{ render(controller('RedmineBundle:Comment:createComment', {'projectId': project.id})) }}
+        {% block comment_form %}
+            {{ render(controller('RedmineBundle:Comment:createComment', {'projectId': project.id})) }}
+        {% endblock %}
     </div>
 
-    <div>
+    <div class="comment-list-wrapper">
         {{ render(controller('RedmineBundle:Comment:listComment', {'projectId': project.id})) }}
     </div>
 

@@ -1,0 +1,7 @@
+{% extends 'RedmineBundle:Project:project_show.html.twig' %}
+
+{% form_theme commentForm '@Redmine/Form/form_errors.html.twig' %}
+
+{% block comment_form %}
+    {{ include('RedmineBundle:Comment:comment_form.html.twig') }}
+{% endblock %}

@@ -3,6 +3,7 @@
 namespace RedmineBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Comment
@@ -37,6 +38,12 @@ class Comment
 
     /**
      * @var string
+     *
+     * @Assert\NotBlank(message="Comment must not be empty")
+     * @Assert\Length(
+     *     max=1000,
+     *     maxMessage="Comment length cannot be longer then {{ limit }} characters"
+     *     )
      *
      * @ORM\Column(name="text", type="text")
      */

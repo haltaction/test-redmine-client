@@ -45,9 +45,19 @@ class CommentController extends Controller
             return $this->redirectToRoute('project_show', [
                 'projectId' => $projectId,
             ]);
+        // if form not valid, render project view with errors
+        } elseif ($form->isSubmitted()) {
+            $project = $this->get('redmine.client')->project->show($projectId);
+            $projectTime = $this->get('redmine.manager')->getAllProjectTime($projectId);
+
+            return $this->render('RedmineBundle:Comment:comment_form_error.html.twig', [
+                'commentForm' => $form->createView(),
+                'project' => $project['project'],
+                'projectTime' => $projectTime,
+            ]);
         }
 
-        return $this->render('@Redmine/Comment/comment_form.html.twig', [
+        return $this->render('RedmineBundle:Comment:comment_form.html.twig', [
             'commentForm' => $form->createView(),
         ]);
     }
