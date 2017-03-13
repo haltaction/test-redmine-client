@@ -8,7 +8,7 @@ use Symfony\Component\HttpFoundation\Response;
 class RedmineController extends Controller
 {
     /**
-     * Show list of projects
+     * Show list of projects.
      *
      * @return Response
      */
@@ -17,7 +17,7 @@ class RedmineController extends Controller
         $projects = $this->get('redmine.client')->project->all();
 
         if (!$projects) {
-            return new Response("Api connect error", 500);
+            return new Response('Api connect error', 500);
         }
 
         return $this->render('RedmineBundle:Redmine:projects_list.html.twig', [
@@ -26,7 +26,7 @@ class RedmineController extends Controller
     }
 
     /**
-     * Show project and track time by project
+     * Show project and track time by project.
      *
      * @param $projectId
      *
@@ -48,7 +48,7 @@ class RedmineController extends Controller
     }
 
     /**
-     * Show issues list with pagination
+     * Show issues list with pagination.
      *
      * @param $projectId
      * @param $page
@@ -72,7 +72,7 @@ class RedmineController extends Controller
     }
 
     /**
-     * Show issue
+     * Show issue.
      *
      * @param $projectId
      * @param $issueId
@@ -84,12 +84,11 @@ class RedmineController extends Controller
         $issue = $this->get('redmine.client')->issue->show($issueId);
 
         if (!$issue) {
-            return new Response("Wrong issue id", 400);
+            return new Response('Wrong issue id', 400);
         }
 
         return $this->render('RedmineBundle:Redmine:issue_show.html.twig', [
             'issue' => $issue,
         ]);
     }
-
 }

@@ -5,12 +5,12 @@ namespace RedmineBundle\Repository;
 use Doctrine\ORM\EntityRepository;
 
 /**
- * CommentRepository
+ * CommentRepository.
  */
 class CommentRepository extends EntityRepository
 {
     /**
-     * Return all comments with selected project ID
+     * Return all comments with selected project ID.
      *
      * @param $projectId
      *

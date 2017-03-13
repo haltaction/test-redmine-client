@@ -8,7 +8,7 @@ use Symfony\Component\HttpFoundation\Request;
 class SecurityController extends Controller
 {
     /**
-     * Render and check user login
+     * Render and check user login.
      *
      * @param Request $request
      *
@@ -24,7 +24,7 @@ class SecurityController extends Controller
 
         return $this->render('RedmineBundle:Security:login.html.twig', array(
             'last_username' => $lastUsername,
-            'error'         => $error,
+            'error' => $error,
         ));
     }
 }

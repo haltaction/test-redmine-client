@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Request;
 class CommentController extends Controller
 {
     /**
-     * Create new comment
+     * Create new comment.
      *
      * @param $projectId
      * @param Request $request
@@ -63,7 +63,7 @@ class CommentController extends Controller
     }
 
     /**
-     * Show comments list
+     * Show comments list.
      *
      * @param $projectId
      *

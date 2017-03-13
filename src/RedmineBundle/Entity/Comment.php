@@ -6,7 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * Comment
+ * Comment.
  *
  * @ORM\Table(name="comment")
  * @ORM\Entity(repositoryClass="RedmineBundle\Repository\CommentRepository")
@@ -56,9 +56,8 @@ class Comment
      */
     private $createdAt;
 
-
     /**
-     * Get id
+     * Get id.
      *
      * @return int
      */
@@ -68,7 +67,7 @@ class Comment
     }
 
     /**
-     * Set projectId
+     * Set projectId.
      *
      * @param string $projectId
      *
@@ -82,7 +81,7 @@ class Comment
     }
 
     /**
-     * Get projectId
+     * Get projectId.
      *
      * @return string
      */
@@ -92,7 +91,7 @@ class Comment
     }
 
     /**
-     * Set username
+     * Set username.
      *
      * @param string $username
      *
@@ -106,7 +105,7 @@ class Comment
     }
 
     /**
-     * Get username
+     * Get username.
      *
      * @return string
      */
@@ -116,7 +115,7 @@ class Comment
     }
 
     /**
-     * Set text
+     * Set text.
      *
      * @param string $text
      *
@@ -130,7 +129,7 @@ class Comment
     }
 
     /**
-     * Get text
+     * Get text.
      *
      * @return string
      */
@@ -140,7 +139,7 @@ class Comment
     }
 
     /**
-     * Set createdAt
+     * Set createdAt.
      *
      * @param \DateTime $createdAt
      *
@@ -154,7 +153,7 @@ class Comment
     }
 
     /**
-     * Get createdAt
+     * Get createdAt.
      *
      * @return \DateTime
      */

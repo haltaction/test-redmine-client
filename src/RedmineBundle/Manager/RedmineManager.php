@@ -13,6 +13,7 @@ class RedmineManager
 
     /**
      * RedmineManager constructor.
+     *
      * @param Client $redmineClient
      */
     public function __construct(Client $redmineClient)
@@ -21,9 +22,10 @@ class RedmineManager
     }
 
     /**
-     * Get all time entries by project and return sum of time
+     * Get all time entries by project and return sum of time.
      *
      * @param $projectId project ID
+     *
      * @return int project time
      */
     public function getAllProjectTime($projectId)
@@ -49,5 +51,4 @@ class RedmineManager
 
         return $allTime;
     }
-
 }
